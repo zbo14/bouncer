@@ -1,0 +1,9 @@
+.DS_Store
+.eslintrc
+.nvmrc
+.tool-versions
+*.sqlite
+*.txt
+bin.js
+haproxy.cfg
+node_modules

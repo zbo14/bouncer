@@ -1,0 +1,40 @@
+version: '3.7'
+
+networks:
+  bouncer:
+    name: bouncer
+
+services:
+  gateway:
+    depends_on:
+      - http_proxy
+      - socks_proxy
+    image: haproxy:2.4.2-alpine
+    networks:
+      - bouncer
+    ports:
+      - 8088:8088
+      - 9059:9059
+    restart: always
+    volumes:
+      - $PWD/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+
+  http_proxy:
+    build: .
+    environment:
+      - proto=http
+    networks:
+      - bouncer
+    restart: always
+    volumes:
+      - $PWD/bouncer.sqlite:/bouncer/bouncer.sqlite
+
+  socks_proxy:
+    build: .
+    environment:
+      - proto=socks
+    networks:
+      - bouncer
+    restart: always
+    volumes:
+      - $PWD/bouncer.sqlite:/bouncer/bouncer.sqlite

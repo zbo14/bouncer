@@ -1,0 +1,47 @@
+{
+  "name": "bouncer",
+  "version": "0.0.1",
+  "description": "HTTP and SOCKS proxy that dynamically blocks hostnames you specify",
+  "bin": "bin.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zbo14/bouncer"
+  },
+  "scripts": {
+    "build": "docker-compose build --no-cache --parallel",
+    "start": "docker-compose up -d --scale http_proxy=4 --scale socks_proxy=4",
+    "stop": "docker-compose down --remove-orphans",
+    "logs": "docker-compose logs -f",
+    "lint": "eslint *.js src/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "docker",
+    "docker-compose",
+    "hostnames",
+    "http",
+    "http-proxy",
+    "privacy",
+    "sequelize",
+    "socks5",
+    "socks-proxy",
+    "sqlite",
+    "sqlite3"
+  ],
+  "author": "Zachary Balder",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^8.0.0",
+    "ip": "^1.1.5",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^5.0.0"
+  }
+}
