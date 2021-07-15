@@ -136,7 +136,7 @@ class SocksConn extends EventEmitter {
 
         if (this.index < index) return
 
-        this.host = ip.toString(this.data, 4, 4)
+        host = ip.toString(this.data, 4, 4)
 
         break
 
